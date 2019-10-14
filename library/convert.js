@@ -20,5 +20,17 @@ const Floatify = function(value, position = 1) {
   }
 }
 
+/**
+ * @param {object} obj
+ * @returns return a copy of an object .
+ */
+
+const Clonify = function(obj) {
+  if(typeof obj === "object") {
+   return JSON.parse(JSON.stringify(obj));
+  } else {
+    return new TypeError('Arguement must be an object');
+  }
+}
 
 module.exports = { Floatify }

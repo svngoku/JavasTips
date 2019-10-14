@@ -1,7 +1,7 @@
 
 /**
- * 
- * @param {string} string 
+ *
+ * @param {string} string
  * @returns Convert a string in UpperCase
  */
 const UpperCase = function (string) {
@@ -10,8 +10,8 @@ const UpperCase = function (string) {
 }
 
 /**
- * 
- * @param {string} string 
+ *
+ * @param {string} string
  * @returns Convert a string in LowerCase
  */
 const LowerCase = function(string) {
@@ -20,8 +20,8 @@ const LowerCase = function(string) {
 }
 
 /**
- * 
- * @param {string} string 
+ *
+ * @param {string} string
  * @returns Convert a string in CamelCase
  */
 const CamelCase = function(string) {
@@ -56,8 +56,8 @@ const trim = function(text) {
 }
 
 /**
- * 
- * @param {string} word 
+ *
+ * @param {string} word
  * @returns R a string in UpperCase
  */
 const AccentToNoAccent = function(word) {
@@ -112,6 +112,15 @@ const randomString = function(sequence,count , options) {
       return word;
     })
     return result.join(' ');
+  }
+}
+
+
+const decapitalize = function([first, ...rest]) {
+  if(typeof first === "string" && typeof rest === "string") {
+    return first.toLowerCase() + rest.join('')
+  } else {
+    return TypeError('Argument must be an string')
   }
 }
 
