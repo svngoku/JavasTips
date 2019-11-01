@@ -292,6 +292,25 @@ library.once = function(fn) {
 }
 
 /**
+ * @param { function } fn
+ * @returns { function }
+ * Take a function as a param and Provides a way
+ * to execute callback functions based
+ * on zero or more Thenable objects, usually
+ * Deferred objects that represent asynchronous events.
+ */
+
+library.when = function(fn) {
+  return function(predicate) {
+    return function(...args) {
+      if(predicate(...args)) {
+        return fn(...args);
+      }
+    }
+  }
+}
+
+/**
  * @param { number | string  } value
  * @param { [number] | [string] } elements
  * @returns {[number]}
@@ -316,6 +335,7 @@ library.take = function(value, elements) {
 }
 
 /**
+ * @param { any } param
  * @returns
  * Gives a single-word string description of the (native) type of a value,
  * returning such answers as 'Object', 'Number', 'Array', or 'Null'.
@@ -328,7 +348,6 @@ library.DefType = function(param) {
   }
   return ;
 }
-
 
 // Destructuring of tips object
 const {
