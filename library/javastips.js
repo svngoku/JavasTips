@@ -294,7 +294,7 @@ library.once = function(fn) {
 /**
  * @param { function } fn
  * @returns { function }
- * Take a function as a param and Provides a way
+ * Take a function as a param and provides a way
  * to execute callback functions based
  * on zero or more Thenable objects, usually
  * Deferred objects that represent asynchronous events.

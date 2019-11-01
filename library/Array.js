@@ -40,6 +40,11 @@ Array.withoutDuplicate = function(array) {
     }
 }
 
+/**
+ * @param { number } arr
+ * @param { number } weight
+ */
+
 Array.findSum = function(arr, weight) {
     let hastable = {};
     let len = Array.LengthOf(arr); // lenght of the array
@@ -58,6 +63,10 @@ Array.findSum = function(arr, weight) {
     return -1;
 }
 
+/**
+ * @param
+ * @returns
+ */
 Array.beginAndEndOf = function(array, begin , end) {
     while (array) {
         partArray = [];
@@ -94,8 +103,8 @@ Array.zip = function(arr1, arr2, callback) {
  */
 Array.maxValue = function(array) {
   if(this.isArray(array)) {
-    if(array.length < 0) {
-      return array;
+    if(Array.LengthOf(array) < 0) {
+      return array.sort();
     } else {
       return Math.max(...array);
     }
@@ -103,13 +112,15 @@ Array.maxValue = function(array) {
     return new Error('Argument must be an Array');
   }
 }
+
+
 /**
  * @param { [number] } array
  */
 Array.minValue = function(array) {
   if(this.isArray(array)) {
-    if(array.length < 0) {
-      return array;
+    if(Array.LengthOf(array) < 0) {
+      return array.sort();
     } else {
       return Math.min(...array);
     }
@@ -126,7 +137,7 @@ Array.minValue = function(array) {
  * followed by the given element.
  */
 Array.append = function(value, array) {
-  var newArray = array;
+  let newArray = array;
   if(value !== undefined && value !== null) {
     if(this.isArray(array)) {
       newArray.push(value);
@@ -181,6 +192,23 @@ Array.dropIf = function(arr, func) {
   }
   return new Error('Invalid arguments');
 };
+
+/**
+ * @param { [number] } arr
+ * @returns { number }
+ * Return the last element of an array
+ */
+Array.lastElement = function (array) {
+  let last = 0;
+  if(this.isArray(array)) {
+    //array.sort;
+    last = Array.maxValue(array)
+  }
+  return last;
+
+}
+
+console.log(Array.lastElement([2,1,3,5,9]));
 
 
 const {
