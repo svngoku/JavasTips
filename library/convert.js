@@ -23,7 +23,9 @@ const Floatify = function(value, position = 1) {
 
 
 /**
- * @param {obj} Object 
+ * @param { Object } obj
+ * @returns { JSON }
+ * clone an object and return it
  */
 const Clone = function(obj) {
   if(typeof obj === "object") {

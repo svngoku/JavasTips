@@ -4,7 +4,12 @@ const _string = require('./String');
 const _array = require('./Array');
 const _boolean = require('./Boolean');
 const _convertion = require('./convert');
+const _set = require('./Set');
 
+
+const {
+  intersetSet, diffSet
+} = _set
 
 const {
   each , map , reduce, easyReduce , find ,
@@ -73,7 +78,9 @@ module.exports = {
   isNumeric,
   isEmpty,
   Floatify,
-  BoyerMooreHorspool
+  BoyerMooreHorspool,
+  intersetSet,
+  diffSet
 }
 
 

@@ -1,14 +1,23 @@
-const webpack = require('webpack')
-const { resolve } = require('path');
+let { resolve } = require('path');
+let webpack = require('webpack');
+let env = process.env.NODE_ENV;
 
 module.exports = {
-  mode: "development",
-  entry: 'library/bundle.js',
+  entry: {
+    "index": "./library/bundle.js",
+  },
   output: {
     path: resolve(__dirname, "dist"),
-    filename: 'webpack-bundle.js',
+    filename: "[name].js",
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(env)
+      }
+    })
+  ],
   resolve: {
     extensions: [".js"]
-  },
+  }
 };

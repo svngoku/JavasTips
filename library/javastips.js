@@ -20,7 +20,7 @@ library.each = function(list, callback) {
 };
 
 /**
-  * @param { [number]} list
+  * @param { [number] } list
   * @param { function } callback
   * @returns Takes a function and a functor,
   * applies the function to each of the functor's values,
@@ -66,7 +66,7 @@ library.easyReduce = function (array, combine, start) {
  * @param { function } callback
  * @param { number } intiValue
  * @function implementation of reduce function
- * @return number
+ * @return {number}
  *
  */
 library.reduce = function(list, callback , initialValue){
@@ -88,12 +88,11 @@ library.reduce = function(list, callback , initialValue){
 
 }
 
-
-// find function , help us to ifn a value, inside an array , an object or an string
 /**
  * @param { number | string } value
  * @param { number | string  } inside
- * @return  boolean
+ * @return  { boolean }
+ * find function , help us to find a value, inside an array , an object or an string
  */
 library.find = function(value, inside) {
     let finded;

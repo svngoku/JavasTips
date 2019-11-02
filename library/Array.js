@@ -201,15 +201,11 @@ Array.dropIf = function(arr, func) {
 Array.lastElement = function (array) {
   let last = 0;
   if(this.isArray(array)) {
-    //array.sort;
+    array.sort;
     last = Array.maxValue(array)
   }
   return last;
-
 }
-
-console.log(Array.lastElement([2,1,3,5,9]));
-
 
 const {
   dim, LengthOf
