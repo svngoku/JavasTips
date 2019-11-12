@@ -51,9 +51,23 @@ const isShortThan = function(string, value) {
   }
 }
 
+/**
+ * @param { any } value
+ * Check if value is primitive.
+*/
+  const isPrimitive =  function(value) {
+    return (
+      typeof value === 'string' ||
+      typeof value === 'number' ||
+      typeof value === 'symbol' ||
+      typeof value === 'boolean'
+    )
+  }
+
 
 module.exports = {
   isShortThan,
   isNumeric,
-  isEmpty
+  isEmpty,
+  isPrimitive
 }
