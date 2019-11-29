@@ -57,3 +57,11 @@ var obj = {
 }
 tips.convert(obj)
 
+// Sets
+let a = new Set([1,2,3]);
+let b = new Set([4,3,2]);
+
+console.log(tips.intersetSet(a,b))
+
+// Max value
+// console.log(tips.maxValue([1, 2, 4]))
