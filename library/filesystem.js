@@ -25,6 +25,18 @@ FileSystem.createFolder = function(name) {
   return TypeError('Argument must be a string');
 }
 
+/**
+ * @param { string } filename
+ */
+FileSystem.ContentFile = function(filename) {
+  filename.split("");
+  if(typeof filename === "string") fs.readFile(__dirname + '/'+filename,"UTF-8",(err, contents) => {
+    if(err) console.error(err);
+    console.log(contents);
+  });
+  else return new TypeError('we need a file name & extension');
+};
+
 
 
 
