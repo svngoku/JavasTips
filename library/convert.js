@@ -58,4 +58,8 @@ const toObject = function(arr) {
   return res
 }
 
-module.exports = { Floatify , Clone, toObject }
+module.exports = {
+  Floatify ,
+  Clone,
+  toObject
+}
