@@ -16,14 +16,3 @@ function define(func) {
 function isEqualTo(abstractValue,initValue) {
   return initValue === abstractValue ?  true : new TypeError(`Not equal : ${abstractValue} !== ${initValue}`);
 }
-
-/**
- *
- * @param {number} n
- * @param {number} x
- */
-const transit = function (n,x) {
-  return x + n
-};
-
-console.log(define(transit(1,3)))
