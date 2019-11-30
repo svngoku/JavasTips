@@ -34,8 +34,33 @@ const BoyerMooreHorspool = function(needle, haystack) {
   return -1;
 }
 
+/**
+ * @param {number} length
+ */
+const getFibonacciSequence = function(length) {
+  var n, ref, results;
+  results = [1];
 
+  fibonacci = function*() {
+    var current, previous;
+    [previous, current] = [1, 1];
+    while (true) {
+      [previous, current] = [current, previous + current];
+      yield current;
+    }
+  };
 
-module.exports = {
-  BoyerMooreHorspool
+  ref = fibonacci();
+  for (n of ref) {
+    results.push(n);
+    if (results.length === length) {
+      break;
+    }
+  }
+  return results;
+};
+
+export default {
+  BoyerMooreHorspool,
+  getFibonacciSequence
 }
