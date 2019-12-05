@@ -1,9 +1,11 @@
+// @ts-check
 "use strict";
+
 
 const library = {}
 
 /**
- * @param { [number]} list
+ * @param {  any } list
  * @param { function } callback
  * Iterate over an input list, calling a provided function fn for each element in the list.
  */
@@ -64,7 +66,7 @@ library.easyReduce = function (array, combine, start) {
 /**
  * @param { [number] } list
  * @param { function } callback
- * @param { number } intiValue
+ * @param { number } initialValue
  * @function implementation of reduce function
  * @return {number}
  *
@@ -83,15 +85,15 @@ library.reduce = function(list, callback , initialValue){
     }
     return memo;
   } else {
-    return new Error('Argument must be an array');
+    return 0;
   }
 
 }
 
 /**
- * @param { number | string } value
- * @param { number | string  } inside
- * @return  { boolean }
+ * @param { any } value
+ * @param { any } inside
+ * @return  { void }
  * find function , help us to find a value, inside an array , an object or an string
  */
 library.find = function(value, inside) {
@@ -259,7 +261,7 @@ library.convert = function(obj) {
 
 /**
  * @param { function } callback
- * @returns { function }
+ * @returns
  * Wraps a function of any arity
  * (including nullary) in a function that accepts exactly 1 parameter.
  * Any extraneous parameters will not be passed to the supplied function.
@@ -274,7 +276,7 @@ library.unary = function(callback) {
 
 /**
  * @param { function } fn
- * @returns { string | boolean }
+ * @returns
  * Accepts a function fn and returns a function that guards
  * invocation of fn such that fn can only ever be called once,
  * no matter how many times the returned function is invoked.
@@ -286,7 +288,7 @@ library.once = function(fn) {
       return done ? undefined : ((done = true), fn.apply(this, arguments));
     }
   } else {
-    return new Error('The element must be a function declaration');
+    return false;
   }
 }
 
@@ -311,13 +313,13 @@ library.when = function(fn) {
 
 /**
  * @param { number | string  } value
- * @param { [number] | [string] } elements
- * @returns {[number]}
+ * @param { any } elements
+ * @returns
  * Returns the first n elements of the given list, string,
  * (or object with a take method)
  */
 library.take = function(value, elements) {
-  let taked = Array();
+  let taked = [];
   let count = elements.length;
   if(typeof value === "number") {
     if(value > count || value === 0) {
@@ -348,18 +350,39 @@ library.DefType = function(param) {
   return ;
 }
 
+/**
+ * @param { Object  } obj
+ * @param { String } propertyName
+ * @param { String } value
+ * @returns { void } Take an object has a first argument and set the selected value
+ * or added a value with a prop.
+ */
+library.set = function(obj, propertyName, value) {
+  if(typeof obj === "object") {
+    for (var property in obj) {
+      if(property === propertyName){
+        if (obj.hasOwnProperty(propertyName) ) {
+          obj[property] = value;
+        }
+      } else {
+        obj[propertyName] = value;
+      }
+    }
+  }
+}
+
 // Destructuring of tips object
 const {
   each , map , reduce , easyReduce, find ,
   filter , reverse , sort, by , not,
   linearSearch , convert , once, unary,
-  take, DefType
+  take, DefType, set
 }  = library;
 
 // export modules
 module.exports = {
   each , map , reduce, easyReduce , find ,
   filter, reverse , sort , by, not ,linearSearch,
-  convert , once , unary,take, DefType
+  convert , once , unary,take, DefType, set
 };
 
