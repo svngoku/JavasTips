@@ -312,7 +312,7 @@ library.when = function(fn) {
 }
 
 /**
- * @param { number | string  } value
+ * @param { number|string  } value
  * @param { any } elements
  * @returns
  * Returns the first n elements of the given list, string,

@@ -6,7 +6,9 @@
     "/library"
   ],
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode=production",
+    "test": "npm run typecheck && node tests/security-smoke.js",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -16,10 +18,13 @@
     "javastips"
   ],
   "author": "Svngoku",
-  "dependencies": {
-    "webpack": "^4.41.1"
-  },
   "devDependencies": {
-    "webpack-cli": "^3.3.9"
+    "esbuild-loader": "^4.5.0",
+    "typescript": "^7.0.2",
+    "webpack": "^5.109.2",
+    "webpack-cli": "^7.2.2"
+  },
+  "overrides": {
+    "kind-of": "^6.0.3"
   }
 }

@@ -1,6 +1,6 @@
-let { resolve } = require('path');
-let webpack = require('webpack');
-let env = process.env.NODE_ENV;
+const { resolve } = require('path');
+const webpack = require('webpack');
+const env = process.env.NODE_ENV || 'production';
 
 module.exports = {
   entry: {
@@ -10,6 +10,21 @@ module.exports = {
     path: resolve(__dirname, "dist"),
     filename: "[name].js",
   },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'esbuild-loader',
+          options: {
+            loader: 'ts',
+            target: 'es2020'
+          }
+        }
+      }
+    ]
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
@@ -18,6 +33,6 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: [".js"]
+    extensions: [".ts", ".js"]
   }
 };

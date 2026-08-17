@@ -1,5 +1,5 @@
 /**
- * @param { number | string} value
+ * @param { number } value
  * @param { number } position
  * @return { number }
  * The functon take a value and a position ,
@@ -10,14 +10,13 @@
  */
 
 const Floatify = function(value, position = 1) {
-  if(typeof value === "number" && typeof position === "number" || typeof value === "string") {
+  if(Number(value) && Number(position)) {
     if(value === 0 && position > 0) {
       return value;
-    } else {
-      return parseFloat(value).toFixed(position)
     }
+    return parseFloat(value).toFixed(position);
   } else {
-    return new Error('Argument must be a Number or a String');
+    throw new Error('Argument must be a Number or a String');
   }
 }
 
@@ -46,7 +45,10 @@ const toObject = function(arr) {
   let res = {};
   function extend (to, _from) {
     for (var key in _from) {
-      to[key] = _from[key];
+      if (key === '__proto__' || key === 'constructor' || key === 'prototype') continue;
+      if (Object.prototype.hasOwnProperty.call(_from, key)) {
+        to[key] = _from[key];
+      }
     }
     return to
   }
@@ -59,7 +61,7 @@ const toObject = function(arr) {
 }
 
 module.exports = {
-  Floatify ,
+  Floatify,
   Clone,
-  toObject
-}
+  toObject,
+};

@@ -11,7 +11,7 @@ const GetURLParameter = function(sParam){
       if (sParameterName[0] === sParam) return sParameterName[1];
     }
   } else {
-    return new TypeError('Argument must be a string')
+    throw new Error('Argument must be a string')
   }
 };
 

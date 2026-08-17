@@ -44,7 +44,7 @@ const {
 const { Floatify } = _convertion
 
 
-const { BoyerMooreHorspool } = _algorithm
+const { BoyerMooreHorspool, getFibonacciSequence } = _algorithm
 
 
 module.exports = {
@@ -79,6 +79,7 @@ module.exports = {
   isEmpty,
   Floatify,
   BoyerMooreHorspool,
+  getFibonacciSequence,
   intersetSet,
   diffSet
 }

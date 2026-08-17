@@ -13,7 +13,7 @@ const loggerHelper = function(mode,initMessage, errorMessage, Nline) {
   } else if(mode === "WARN") {
     console.error(`${initMessage} ${errorMessage} at line: ${Nline}`);
   } else {
-    return new Error('Wrong mode for your debugging');
+    throw new Error('Wrong mode for your debugging');
   }
 }
 
@@ -29,10 +29,12 @@ const TimeOfRunning = function(fnc, name) {
       console.timeEnd(`${name}`);
     })();
   } else {
-    return new TypeError('Arguments errors');
+    throw new Error('Arguments errors');
   }
 }
 
 
-
-
+export default {
+  loggerHelper,
+  TimeOfRunning
+}

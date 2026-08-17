@@ -65,3 +65,6 @@ console.log(tips.intersetSet(a,b))
 
 // Max value
 // console.log(tips.maxValue([1, 2, 4]))
+
+
+console.log(tips.find("f", "finding the food"));

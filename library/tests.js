@@ -3,7 +3,7 @@ function define(func) {
     if(typeof func === "function") {
       func();
     } else {
-      return new TypeError('wrong type on your arguments');
+      throw new Error('wrong type on your arguments');
     }
 }
 
@@ -14,5 +14,5 @@ function define(func) {
  *
  */
 function isEqualTo(abstractValue,initValue) {
-  return initValue === abstractValue ?  true : new TypeError(`Not equal : ${abstractValue} !== ${initValue}`);
+  return initValue === abstractValue ?  true : new Error(`Not equal : ${abstractValue} !== ${initValue}`);
 }

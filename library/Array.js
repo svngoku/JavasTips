@@ -1,8 +1,10 @@
+const ArrayTools = {};
+
 /**
  * @param { number } dimension
  * @param { number } initial
  */
-Array.dim = function(dimension, initial) {
+const dim = function(dimension, initial) {
     if(typeof dimension === "number" && typeof initial === "number") {
       let a = new Array();
       for(let i = 0; i < dimension; i++) {
@@ -18,7 +20,7 @@ Array.dim = function(dimension, initial) {
  * @param { array } element
  * @returns return the length of an element an params
  */
-Array.LengthOf = function(element) {
+const LengthOf = function(element) {
   if(Array.isArray(element)) {
     if(typeof element === "object")  return element.length;
     if(element <= 0) return 0;
@@ -30,9 +32,9 @@ Array.LengthOf = function(element) {
 /**
  * @param { [number] } array
  */
-Array.withoutDuplicate = function(array) {
+const withoutDuplicate = function(array) {
     let newArray = new Set();
-    if(this.isArray(array)){
+    if(Array.isArray(array)){
       array.forEach((element) => newArray.add(element))
       return newArray;
     } else {
@@ -45,9 +47,9 @@ Array.withoutDuplicate = function(array) {
  * @param { number } weight
  */
 
-Array.findSum = function(arr, weight) {
+const findSum = function(arr, weight) {
     let hastable = {};
-    let len = Array.LengthOf(arr); // lenght of the array
+    let len = LengthOf(arr); // lenght of the array
     // console.log( `length of the array: ${len}`); // check state
     for (let i = 0; i < len; i++) {
         let currentEl = arr[i], // looping of all elements
@@ -67,9 +69,9 @@ Array.findSum = function(arr, weight) {
  * @param
  * @returns
  */
-Array.beginAndEndOf = function(array, begin , end) {
+const beginAndEndOf = function(array, begin , end) {
     while (array) {
-        partArray = [];
+        let partArray = [];
         if(!begin && !end) {
             return array;
         }
@@ -80,7 +82,7 @@ Array.beginAndEndOf = function(array, begin , end) {
     }
 }
 
-Array.zip = function(arr1, arr2, callback) {
+ const zip = function(arr1, arr2, callback) {
  if(typeof callback === 'function') {
   if(arr1 && arr2 !== undefined ) {
     let index, result = [];
@@ -89,10 +91,10 @@ Array.zip = function(arr1, arr2, callback) {
     }
     return result;
   } else {
-    return new Error('Arguments must be an array');
+    throw new Error('Arguments must be an array');
   }
  } else {
-   return new Error('last argument must be an function expression');
+   throw new Error('last argument must be an function expression');
  }
 }
 
@@ -101,15 +103,15 @@ Array.zip = function(arr1, arr2, callback) {
  * @returns { number }
  * Retuern the value max inside an array
  */
-Array.maxValue = function(array) {
-  if(this.isArray(array)) {
-    if(Array.LengthOf(array) < 0) {
+const maxValue = function(array) {
+  if(Array.isArray(array)) {
+    if(LengthOf(array) < 0) {
       return array.sort();
     } else {
       return Math.max(...array);
     }
   } else {
-    return new Error('Argument must be an Array');
+     throw new Error('Argument must be an Array');
   }
 }
 
@@ -117,9 +119,9 @@ Array.maxValue = function(array) {
 /**
  * @param { [number] } array
  */
-Array.minValue = function(array) {
-  if(this.isArray(array)) {
-    if(Array.LengthOf(array) < 0) {
+ArrayTools.minValue = function(array) {
+  if(Array.isArray(array)) {
+    if(LengthOf(array) < 0) {
       return array.sort();
     } else {
       return Math.min(...array);
@@ -136,10 +138,10 @@ Array.minValue = function(array) {
  * Returns a new list containing the contents of the given list,
  * followed by the given element.
  */
-Array.append = function(value, array) {
+ArrayTools.append = function(value, array) {
   let newArray = array;
   if(value !== undefined && value !== null) {
-    if(this.isArray(array)) {
+    if(Array.isArray(array)) {
       newArray.push(value);
       return newArray;
     } else {
@@ -152,9 +154,9 @@ Array.append = function(value, array) {
 /**
  * @param {[number]} array
  */
-Array.allEqual = function(array) {
-  if(this.isArray(array)) {
-    if(this.LengthOf(array) <= 0) {
+ArrayTools.allEqual = function(array) {
+  if(Array.isArray(array)) {
+    if(LengthOf(array) <= 0) {
       return array;
     } else {
       return array.every(value => value === array[0]);
@@ -169,8 +171,8 @@ Array.allEqual = function(array) {
  * @param { number } b
  * @return return the difference between two arrays.
  */
-Array.difference = function(a, b){
-  if(this.isArray(a) && this.isArray(b)) {
+ArrayTools.difference = function(a, b){
+  if(Array.isArray(a) && Array.isArray(b)) {
     const s = new Set(b);
     return a.filter(x => !s.has(x));
   } else {
@@ -185,9 +187,9 @@ Array.difference = function(a, b){
  * @returns removes elements from an array until
  *  the passed function returns true
  */
-Array.dropIf = function(arr, func) {
-  if(this.isArray(arr) && typeof func === "function") {
-    while(this.LengthOf(arr) > 0 && !func(arr[0])) arr = arr.slice(1);
+ArrayTools.dropIf = function(arr, func) {
+  if(Array.isArray(arr) && typeof func === "function") {
+    while(LengthOf(arr) > 0 && !func(arr[0])) arr = arr.slice(1);
     return arr;
   }
   return new Error('Invalid arguments');
@@ -198,26 +200,24 @@ Array.dropIf = function(arr, func) {
  * @returns { number }
  * Return the last element of an array
  */
-Array.lastElement = function (array) {
+ArrayTools.lastElement = function (array) {
   let last = 0;
-  if(this.isArray(array)) {
+  if(Array.isArray(array)) {
     array.sort;
-    last = Array.maxValue(array)
+    last = maxValue(array)
   }
   return last;
 }
 
-const {
-  dim, LengthOf
-  ,withoutDuplicate, beginAndEndOf,
-  zip, minValue,
-  maxValue, append,
-  dropIf , allEqual} = Array;
-
 module.exports = {
-  dim , LengthOf ,
-  withoutDuplicate, beginAndEndOf,
-  zip, minValue,
-  maxValue, append,
-    dropIf , allEqual
+  dim,
+  LengthOf,
+  withoutDuplicate,
+  beginAndEndOf,
+  zip,
+  minValue: ArrayTools.minValue,
+  maxValue,
+  append: ArrayTools.append,
+  dropIf: ArrayTools.dropIf,
+  allEqual: ArrayTools.allEqual
 };
